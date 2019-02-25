@@ -12,26 +12,12 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class IO {
 	private final static Charset CHARSET = Charset.forName("UTF-8");
-
-	public static void read(String path) {
-
-		try (BufferedReader reader = Files.newBufferedReader(Paths.get(path), CHARSET)) {
-			String line = null;
-
-			while ((line = reader.readLine()) != null) {
-
-				System.out.println(line);
-			}
-
-		} catch (IOException x) {
-			System.err.format("IOException: %s%n", x);
-		}
-
-	}
 
 	public static void write(String text, String file) {
 		try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(file), CHARSET)) {
@@ -53,7 +39,7 @@ public class IO {
 		}
 	}
 
-	public void serialize(Object obj, String path) {
+	public static void serialize(Object obj, String path) {
 		try {
 			FileOutputStream filout = new FileOutputStream(path);
 			ObjectOutputStream obstr = new ObjectOutputStream(filout);
@@ -65,20 +51,20 @@ public class IO {
 		}
 	}
 
-	public Object deSerialize(String path) {
+	public static Object deSerialize(String path) {
 
 		try {
-			File tmpDir = new File(path);
-			boolean exists = tmpDir.exists();
-			if (exists) {
+			File f = new File(path);
+			boolean exist = f.exists();
+			if (exist) {
 				FileInputStream fis = new FileInputStream(path);
 				ObjectInputStream ois = new ObjectInputStream(fis);
 				Object obj = ois.readObject();
 				ois.close();
 				fis.close();
-				return obj;				
+				return obj;
 			}else {
-				return  null;
+				return new ArrayList<Personal>();
 			}
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
@@ -88,5 +74,36 @@ public class IO {
 			c.printStackTrace();
 			return null;
 		}
+	}
+
+	public static List<String> readNames(String path) {
+
+		List<String> fileArr = null;
+		try {
+			fileArr = Files.readAllLines(Paths.get(path), CHARSET);
+			return fileArr;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public static ArrayList<String> readAdress(String path) {
+		ArrayList<String> a = new ArrayList<>();
+
+		try (BufferedReader reader = Files.newBufferedReader(Paths.get(path), CHARSET)) {
+			String line = null;
+
+			while ((line = reader.readLine()) != null) {
+				String adress = line;
+				line = reader.readLine();
+
+				a.add(adress);
+
+			}
+		} catch (IOException x) {
+			System.err.format("IOException: %s%n", x);
+		}
+		return a;
 	}
 }

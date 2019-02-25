@@ -1,6 +1,7 @@
 package personalReg;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 public class Personal implements Serializable {
 
@@ -9,18 +10,19 @@ public class Personal implements Serializable {
 	*/
 	private static final long serialVersionUID = -3869961098372491439L;
 	String namn, adress, phone, postnumber;
-	int age, id;
+	int age;
+	UUID id;
 	long income;
 
-	public Personal(String namn, String adress, String phone, String postnumber, int age, int id, long income) {
+	public Personal(String namn, String adress, String phone, String postnumber, int age,long income) {
 
 		this.namn = namn;
 		this.adress = adress;
 		this.phone = phone;
 		this.postnumber = postnumber;
 		this.age = age;
-		this.id = id;
 		this.income = income;
+		this.id = UUID.randomUUID();
 	}
 
 	/**
@@ -40,7 +42,7 @@ public class Personal implements Serializable {
 	/**
 	 * @return the id
 	 */
-	public int getId() {
+	public UUID getId() {
 		return id;
 	}
 
@@ -75,7 +77,7 @@ public class Personal implements Serializable {
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(int id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 

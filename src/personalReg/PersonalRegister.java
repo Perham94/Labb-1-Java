@@ -2,10 +2,13 @@ package personalReg;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class PersonalRegister {
 
 	private static final String PATH = "personalLista.ser";
+	private static String[] namesList;
+	private static ArrayList<String> adressList;
 
 	public static void main(String[] args) throws IOException {
 		start();
@@ -15,6 +18,7 @@ public class PersonalRegister {
 	public static void start() throws IOException {
 		ArrayList<Personal> personalLista = deSerialize();
 
+		readInList();
 		ConsoleReader cr = new ConsoleReader();
 
 		while (true) {
@@ -48,6 +52,7 @@ public class PersonalRegister {
 			case 6:
 				break;
 			case 7:
+				randomizePersonal(personalLista);
 				break;
 			case 8:
 				break;
@@ -59,11 +64,73 @@ public class PersonalRegister {
 		}
 	}
 
+
+	private static void readInList() {
+		namesList = IO.readNames("names.txt").get(0).replace("\"", "").split(",");
+		adressList = IO.readAdress("adressList.txt");
+	}
+
+	private static void randomizePersonal(ArrayList<Personal> personalLista) {
+
+		Random rand = new java.util.Random();
+
+		String namn = namesList[rand.nextInt(namesList.length)] + " " + namesList[rand.nextInt(namesList.length)];
+		String[] adress = adressList.get(rand.nextInt(adressList.size())).split(",");
+		String phone = "" + (int)Math.floor(Math.random() * ((999)) + 10) + "-"
+				+ (long)Math.floor(Math.random() * ((9999999)) + 1000000);
+		int age = (int) Math.floor(Math.random() * ((150)) + 18);
+		long wage = (long) Math.floor(Math.random() * ((999999)) + 90000);
+		personalLista.add(new Personal(namn, adress[0], phone, adress[1], age, wage));
+
+		
+	}
+
+	@SuppressWarnings("null")
 	private static void searchPers(ArrayList<Personal> personalLista) throws IOException {
 		ConsoleReader cr = new ConsoleReader();
 		System.out.println("Vad söker du efter? 1. Personal namn , 2. Personal ålder  "
 				+ ", 3. Personal Telefon Nummer , 4. Personal Adress, " + "5. Personal Postnummer + "
 				+ "6. Personal Lön");
+
+		Personal index = null;
+		String namn;
+
+		switch (cr.inInt()) {
+
+		case 1:
+			if (index.getNamn().matches(cr.inStr())) {
+				personalLista.indexOf(index.namn);
+			}
+			break;
+		case 2:
+			if (index.getAge() == cr.inInt()) {
+
+			}
+			break;
+
+		case 3:
+			if (index.getPhone().matches(cr.inStr())) {
+
+			}
+			break;
+
+		case 4:
+			if (index.getAdress().matches(cr.inStr())) {
+
+			}
+			break;
+		case 5:
+			if (index.getPostnumber().matches(cr.inStr())) {
+
+			}
+			break;
+
+		case 6:
+			if (index.getIncome() == cr.inLong()) {
+
+			}
+			break;
+		}
 
 	}
 
@@ -80,15 +147,15 @@ public class PersonalRegister {
 	}
 
 	private static void serialize(ArrayList<Personal> personalLista) {
-		IO in = new IO();
-		in.serialize(personalLista, PATH);
+		IO.serialize(personalLista, PATH);
 	}
 
 	private static ArrayList<Personal> deSerialize() {
-		IO in = new IO();
 
 		@SuppressWarnings("unchecked")
-		ArrayList<Personal> personalLista = (ArrayList<Personal>) in.deSerialize(PATH);
+
+		ArrayList<Personal> personalLista = (ArrayList<Personal>) IO.deSerialize(PATH);
+
 		if (personalLista == null) {
 			return new ArrayList<Personal>();
 		}
@@ -111,11 +178,9 @@ public class PersonalRegister {
 		String postnumber = cr.inStr();
 		System.out.println("Ålder: ");
 		int age = cr.inInt();
-		System.out.println("id: ");
-		int id = cr.inInt();
 		System.out.println("lön: ");
 		long income = cr.inLong();
-		personalLista.add(new Personal(namn, adress, phone, postnumber, age, id, income));
+		personalLista.add(new Personal(namn, adress, phone, postnumber, age, income));
 	}
 
 }
