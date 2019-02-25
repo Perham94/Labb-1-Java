@@ -55,6 +55,7 @@ public class PersonalRegister {
 				randomizePersonal(personalLista);
 				break;
 			case 8:
+				createTable(personalLista);
 				break;
 			case 9:
 				serialize(personalLista);
@@ -62,6 +63,37 @@ public class PersonalRegister {
 				return;
 			}
 		}
+	}
+
+	private static void createTable(ArrayList<Personal> personalLista) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("<!DOCTYPE html>\r\n" + "<html>\r\n" + "<head>\r\n" + "<style>\r\n" + "table {\r\n"
+				+ "  font-family: arial, sans-serif;\r\n" + "  border-collapse: collapse;\r\n" + "  width: 100%;\r\n"
+				+ "}\r\n" + "\r\n" + "td, th {\r\n" + "  border: 1px solid #dddddd;\r\n" + "  text-align: left;\r\n"
+				+ "  padding: 8px;\r\n" + "}\r\n" + "\r\n" + "tr:nth-child(even) {\r\n"
+				+ "  background-color: #dddddd;\r\n" + "}\r\n" + "</style>\r\n" + "</head>\r\n" + "<body>\r\n" + "\r\n"
+				+ "<h2>Personal Lista</h2>\r\n" + "\r\n" + "<table>\r\n" + "  <tr>\r\n" + "    <th>Namn</th>\r\n"
+				+ "    <th>Adress</th>\r\n" + "    <th>Telefon nummer</th>\r\n" + "	<th>Post nummer</th>\r\n"
+				+ "    <th>Ålder</th>\r\n" + "	<th>Inkomst</th>\r\n" + "	<th>UUID</th>\r\n" + "  </tr>");
+
+		for (Personal personal : personalLista) {
+			sb.append("<tr>");
+			sb.append("<td>"+personal.getNamn()+"</td>");
+			sb.append("<td>"+personal.getAdress()+"</td>");
+			sb.append("<td>"+personal.getPhone()+"</td>");
+			sb.append("<td>"+personal.getPostnumber()+"</td>");
+			sb.append("<td>"+personal.getAge()+"</td>");
+			sb.append("<td>"+personal.getIncome()+"</td>");
+			sb.append("<td>"+personal.getId()+"</td>");
+			sb.append("</tr>");
+		}
+		
+		sb.append("</table>\r\n" + 
+				"\r\n" + 
+				"</body>\r\n" + 
+				"</html>");
+		
+		IO.write(sb.toString(),"rapport.html");
 	}
 
 	private static void sortList(ArrayList<Personal> personalLista) throws IOException {
