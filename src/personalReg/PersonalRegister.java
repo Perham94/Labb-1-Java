@@ -86,18 +86,55 @@ public class PersonalRegister {
 
 		ConsoleReader cr = new ConsoleReader();
 
-		System.out.println("Vad söker du efter? ");
-		String text = cr.inStr();
-//		int nummer = cr.inInt();
+		System.out.println("Vad söker du efter?" + " 1.Namn 2.Ålder 3.Adress 4.telefon nummer 5.post nummer 6.lön");
+
 		int elementIndex = 0;
+		int in = cr.inInt();
+		String text = cr.inStr();
 
 		for (Personal p : personalLista) {
-			if (p.getNamn().contains(text)) {
 
-				System.out.println("found");
-				elementIndex = personalLista.indexOf(p);
+			switch (in) {
+
+			case 1:
+				if (p.getNamn().contains(text)) {
+					System.out.println("found " + personalLista.get(personalLista.indexOf(p)));
+					elementIndex = personalLista.indexOf(p);
+				}
+				break;
+			case 2:
+				if (p.getAge() == Integer.parseInt(text)) {
+					System.out.println("found " + personalLista.get(personalLista.indexOf(p)));
+					elementIndex = personalLista.indexOf(p);
+				}
+				break;
+			case 3:
+				if (p.getAdress().contains(text)) {
+					System.out.println("found " + personalLista.get(personalLista.indexOf(p)));
+					elementIndex = personalLista.indexOf(p);
+				}
+				break;
+			case 4:
+				if (p.getPhone().contains(text)) {
+					System.out.println("found " + personalLista.get(personalLista.indexOf(p)));
+					elementIndex = personalLista.indexOf(p);
+				}
+				break;
+			case 5:
+				if (p.getPostnumber().contains(text)) {
+					System.out.println("found " + personalLista.get(personalLista.indexOf(p)));
+					elementIndex = personalLista.indexOf(p);
+				}
+				break;
+			case 6:
+				if (p.getIncome() == Long.parseLong(text)) {
+					System.out.println("found " + personalLista.get(personalLista.indexOf(p)));
+					elementIndex = personalLista.indexOf(p);
+				}
+				break;
 			}
 		}
+
 		return elementIndex;
 	}
 
