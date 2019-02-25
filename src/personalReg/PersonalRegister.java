@@ -151,7 +151,7 @@ public class PersonalRegister {
 		String text = cr.inStr();
 
 		for (Personal p : personalLista) {
-
+			System.out.println("Ange vad du vill söka");
 			switch (in) {
 
 			case 1:

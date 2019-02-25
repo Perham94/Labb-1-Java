@@ -138,8 +138,8 @@ public class Personal implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "Personal [namn=" + namn + ", adress=" + adress + ", phone=" + phone + ", postnumber=" + postnumber
-				+ ", age=" + age + ", id=" + id + ", income=" + income + "]";
+		return "Personal [namn= " + namn + ", adress= " + adress + ", phone= " + phone + ", postnumber= " + postnumber
+				+ ", age= " + age + ", id= " + id + ", income= " + income + "]";
 	}
 
 }
