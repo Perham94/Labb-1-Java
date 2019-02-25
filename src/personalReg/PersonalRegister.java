@@ -86,9 +86,21 @@ public class PersonalRegister {
 
 	private static void addPost(ArrayList<Personal> personalLista) throws IOException {
 		ConsoleReader cr = new ConsoleReader();
-
-		personalLista
-				.add(new Personal(cr.inStr(), cr.inStr(), cr.inStr(), cr.inStr(), cr.inInt(), cr.inInt(), cr.inInt()));
+		System.out.println("Namn: ");
+		String namn = cr.inStr();
+		System.out.println("Adress: ");
+		String adress = cr.inStr();
+		System.out.println("Telefon Nummer: ");
+		String phone = cr.inStr();
+		System.out.println("Post Nummer: ");
+		String postnumber = cr.inStr();
+		System.out.println("Ålder: ");
+		int age = cr.inInt();
+		System.out.println("id: ");
+		int id = cr.inInt();
+		System.out.println("lön: ");
+		int income = cr.inInt();
+		personalLista.add(new Personal(namn, adress, phone, postnumber, age, id, income));
 	}
 
 }
