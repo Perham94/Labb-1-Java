@@ -12,67 +12,15 @@ public class Personal implements Serializable {
 	int age, id;
 	long income;
 
-	/**
-	 * @return the phone
-	 */
-	public String getPhone() {
-		return phone;
-	}
+	public Personal(String namn, String adress, String phone, String postnumber, int age, int id, long income) {
 
-	/**
-	 * @param phone the phone to set
-	 */
-	public void setPhone(String phone) {
+		this.namn = namn;
+		this.adress = adress;
 		this.phone = phone;
-	}
-
-	/**
-	 * @return the postnumber
-	 */
-	public String getPostnumber() {
-		return postnumber;
-	}
-
-	/**
-	 * @param postnumber the postnumber to set
-	 */
-	public void setPostnumber(String postnumber) {
 		this.postnumber = postnumber;
-	}
-
-	/**
-	 * @return the id
-	 */
-	public int getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(int id) {
+		this.age = age;
 		this.id = id;
-	}
-
-	/**
-	 * @return the income
-	 */
-	public long getIncome() {
-		return income;
-	}
-
-	/**
-	 * @param income the income to set
-	 */
-	public void setIncome(long income) {
 		this.income = income;
-	}
-
-	/**
-	 * @return the namn
-	 */
-	public String getNamn() {
-		return namn;
 	}
 
 	/**
@@ -89,15 +37,67 @@ public class Personal implements Serializable {
 		return age;
 	}
 
-	public Personal(String namn, String adress, String phone, String postnumber, int age, int id, long income) {
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
 
-		this.namn = namn;
-		this.adress = adress;
-		this.phone = phone;
-		this.postnumber = postnumber;
-		this.age = age;
+	/**
+	 * @return the income
+	 */
+	public long getIncome() {
+		return income;
+	}
+
+	/**
+	 * @return the namn
+	 */
+	public String getNamn() {
+		return namn;
+	}
+
+	/**
+	 * @return the phone
+	 */
+	public String getPhone() {
+		return phone;
+	}
+
+	/**
+	 * @return the postnumber
+	 */
+	public String getPostnumber() {
+		return postnumber;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
 		this.id = id;
+	}
+
+	/**
+	 * @param income the income to set
+	 */
+	public void setIncome(long income) {
 		this.income = income;
+	}
+
+	/**
+	 * @param phone the phone to set
+	 */
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	/**
+	 * @param postnumber the postnumber to set
+	 */
+	public void setPostnumber(String postnumber) {
+		this.postnumber = postnumber;
 	}
 
 	/*
