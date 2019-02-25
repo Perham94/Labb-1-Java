@@ -40,7 +40,7 @@ start();
 				case 5 :
 					break;
 				case 6 :
-					return;
+					break;
 				case 7 :
 					break;
 				case 8 :
