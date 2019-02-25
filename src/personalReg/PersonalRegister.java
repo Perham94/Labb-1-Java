@@ -63,7 +63,6 @@ public class PersonalRegister {
 		}
 	}
 
-
 	private static void readInList() {
 		namesList = IO.readNames("names.txt").get(0).replace("\"", "").split(",");
 		adressList = IO.readAdress("adressList.txt");
@@ -75,61 +74,31 @@ public class PersonalRegister {
 
 		String namn = namesList[rand.nextInt(namesList.length)] + " " + namesList[rand.nextInt(namesList.length)];
 		String[] adress = adressList.get(rand.nextInt(adressList.size())).split(",");
-	
-		String phone = "" + (int)Math.floor(Math.random() * ((999)) + 10) + "-"
-				+ (long)Math.floor(Math.random() * ((9999999)) + 1000000);
+
+		String phone = "" + (int) Math.floor(Math.random() * ((999)) + 10) + "-"
+				+ (long) Math.floor(Math.random() * ((9999999)) + 1000000);
 		int age = (int) Math.floor(Math.random() * ((150)) + 18);
 		long wage = (long) Math.floor(Math.random() * ((999999)) + 90000);
 		personalLista.add(new Personal(namn, adress[0], phone, adress[1], age, wage));
 	}
 
-	@SuppressWarnings("null")
-	private static void searchPers(ArrayList<Personal> personalLista) throws IOException {
+	private static int searchPers(ArrayList<Personal> personalLista) throws IOException {
+
 		ConsoleReader cr = new ConsoleReader();
-		System.out.println("Vad söker du efter? 1. Personal namn , 2. Personal ålder  "
-				+ ", 3. Personal Telefon Nummer , 4. Personal Adress, " + "5. Personal Postnummer + "
-				+ "6. Personal Lön");
 
-		Personal index = null;
-		String namn;
+		System.out.println("Vad söker du efter? ");
+		String text = cr.inStr();
+//		int nummer = cr.inInt();
+		int elementIndex = 0;
 
-		switch (cr.inInt()) {
+		for (Personal p : personalLista) {
+			if (p.getNamn().contains(text)) {
 
-		case 1:
-			if (index.getNamn().matches(cr.inStr())) {
-				personalLista.indexOf(index.namn);
+				System.out.println("found");
+				elementIndex = personalLista.indexOf(p);
 			}
-			break;
-		case 2:
-			if (index.getAge() == cr.inInt()) {
-
-			}
-			break;
-
-		case 3:
-			if (index.getPhone().matches(cr.inStr())) {
-
-			}
-			break;
-
-		case 4:
-			if (index.getAdress().matches(cr.inStr())) {
-
-			}
-			break;
-		case 5:
-			if (index.getPostnumber().matches(cr.inStr())) {
-
-			}
-			break;
-
-		case 6:
-			if (index.getIncome() == cr.inLong()) {
-
-			}
-			break;
 		}
-
+		return elementIndex;
 	}
 
 	private static void showPost(ArrayList<Personal> personalLista) {
