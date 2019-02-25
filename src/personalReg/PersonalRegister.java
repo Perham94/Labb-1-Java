@@ -7,13 +7,14 @@ public class PersonalRegister {
 
 	public static void main(String[] args) throws IOException {
 		start();
+
 	}
 
 	public static void start() throws IOException {
 		ArrayList<Personal> personalLista = new ArrayList<>();
 
 		ConsoleReader cr = new ConsoleReader();
-
+		deSerialize();
 		while (true) {
 			System.out.println("1: Lägg till personal");
 			System.out.println("2: Editera personal");
@@ -22,9 +23,8 @@ public class PersonalRegister {
 			System.out.println("5: Sök personal");
 			System.out.println("6: Sortera personal");
 			System.out.println("7: Skapa en personal automatiskt");
-			System.out.println("8: Spara alla personal till fil");
-			System.out.println("9: Läs in alla personal från fil");
-			System.out.println("10: Avsluta");
+			System.out.println("8: Skapa rapport");
+			System.out.println("9: Avsluta");
 			int in = cr.inInt();
 
 			switch (in) {
@@ -49,8 +49,7 @@ public class PersonalRegister {
 			case 8:
 				break;
 			case 9:
-				break;
-			case 10:
+				serialize();
 				System.out.println("Adjö!");
 				return;
 			}
@@ -70,9 +69,20 @@ public class PersonalRegister {
 
 	}
 
+	private static void serialize() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private static void deSerialize() {
+		// TODO Auto-generated method stub
+
+	}
+
 	private static void editPost() {
 		// TODO Auto-generated method stub
 
+		
 	}
 
 	private static void addPost(ArrayList<Personal> personalLista) throws IOException {
