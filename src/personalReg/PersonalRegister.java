@@ -76,6 +76,7 @@ public class PersonalRegister {
 
 		String namn = namesList[rand.nextInt(namesList.length)] + " " + namesList[rand.nextInt(namesList.length)];
 		String[] adress = adressList.get(rand.nextInt(adressList.size())).split(",");
+	
 		String phone = "" + (int)Math.floor(Math.random() * ((999)) + 10) + "-"
 				+ (long)Math.floor(Math.random() * ((9999999)) + 1000000);
 		int age = (int) Math.floor(Math.random() * ((150)) + 18);

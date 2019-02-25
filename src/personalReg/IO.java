@@ -98,7 +98,7 @@ public class IO {
 				String adress = line;
 				line = reader.readLine();
 
-				a.add(adress);
+				a.add(adress+" " +line);
 
 			}
 		} catch (IOException x) {
