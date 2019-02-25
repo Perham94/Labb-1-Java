@@ -81,8 +81,6 @@ public class PersonalRegister {
 		int age = (int) Math.floor(Math.random() * ((150)) + 18);
 		long wage = (long) Math.floor(Math.random() * ((999999)) + 90000);
 		personalLista.add(new Personal(namn, adress[0], phone, adress[1], age, wage));
-
-		
 	}
 
 	@SuppressWarnings("null")
