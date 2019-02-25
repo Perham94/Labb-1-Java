@@ -13,13 +13,11 @@ public class PersonalRegister {
 	}
 
 	public static void start() throws IOException {
-		ArrayList<Personal> personalLista;
+		ArrayList<Personal> personalLista= deSerialize();
 
 		ConsoleReader cr = new ConsoleReader();
-		personalLista = deSerialize();
-		if (personalLista == null) {
-			personalLista = new ArrayList<>();
-		}
+		 
+
 		while (true) {
 			System.out.println("1: Lägg till personal");
 			System.out.println("2: Editera personal");
@@ -80,8 +78,12 @@ public class PersonalRegister {
 
 	private static ArrayList<Personal> deSerialize() {
 		IO in = new IO();
+	
 		@SuppressWarnings("unchecked")
 		ArrayList<Personal> personalLista = (ArrayList<Personal>) in.deSerialize(PATH);
+		if (personalLista==null) {
+			return new ArrayList<Personal>();
+		}
 		return personalLista;
 	}
 

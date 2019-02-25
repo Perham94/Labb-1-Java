@@ -2,6 +2,7 @@ package personalReg;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -11,6 +12,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+
 
 public class IO {
 	private final static Charset CHARSET = Charset.forName("UTF-8");
@@ -66,12 +68,18 @@ public class IO {
 	public Object deSerialize(String path) {
 
 		try {
-			FileInputStream fis = new FileInputStream(path);
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			Object obj = ois.readObject();
-			ois.close();
-			fis.close();
-			return obj;
+			File tmpDir = new File(path);
+			boolean exists = tmpDir.exists();
+			if (exists) {
+				FileInputStream fis = new FileInputStream(path);
+				ObjectInputStream ois = new ObjectInputStream(fis);
+				Object obj = ois.readObject();
+				ois.close();
+				fis.close();
+				return obj;				
+			}else {
+				return  null;
+			}
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
 			return null;
