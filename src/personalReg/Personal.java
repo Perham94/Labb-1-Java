@@ -1,6 +1,7 @@
 package personalReg;
 
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.UUID;
 
 public class Personal implements Serializable {
@@ -9,10 +10,10 @@ public class Personal implements Serializable {
 	* 
 	*/
 	private static final long serialVersionUID = -3869961098372491439L;
-	String namn, adress, phone, postnumber;
-	int age;
-	UUID id;
-	long income;
+	private String namn, adress, phone, postnumber;
+	private int age;
+	private UUID id;
+	private long income;
 
 	public Personal(String namn, String adress, String phone, String postnumber, int age,long income) {
 
@@ -114,3 +115,30 @@ public class Personal implements Serializable {
 	}
 
 }
+class Sortbyage implements Comparator<Personal> 
+{ 
+    // Used for sorting in ascending order of 
+    // age 
+    public int compare(Personal a, Personal b) 
+    { 
+        return a.getAge() - b.getAge(); 
+    } 
+} 
+class Sortbyincome implements Comparator<Personal> 
+{ 
+    // Used for sorting in ascending order of 
+    // income 
+    public int compare(Personal a, Personal b) 
+    { 
+        return (int) (a.getIncome() - b.getIncome()); 
+    } 
+} 
+class Sortbyname implements Comparator<Personal> 
+{ 
+    // Used for sorting in ascending order of 
+    // name 
+    public int compare(Personal a, Personal b) 
+    { 
+        return a.getNamn().compareTo(b.getNamn()); 
+    } 
+} 
