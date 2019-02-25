@@ -15,7 +15,7 @@ public class Personal implements Serializable {
 	private UUID id;
 	private long income;
 
-	public Personal(String namn, String adress, String phone, String postnumber, int age,long income) {
+	public Personal(String namn, String adress, String phone, String postnumber, int age, long income) {
 
 		this.namn = namn;
 		this.adress = adress;
@@ -103,6 +103,34 @@ public class Personal implements Serializable {
 		this.postnumber = postnumber;
 	}
 
+	/**
+	 * @return the serialversionuid
+	 */
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	/**
+	 * @param namn the namn to set
+	 */
+	public void setNamn(String namn) {
+		this.namn = namn;
+	}
+
+	/**
+	 * @param adress the adress to set
+	 */
+	public void setAdress(String adress) {
+		this.adress = adress;
+	}
+
+	/**
+	 * @param age the age to set
+	 */
+	public void setAge(int age) {
+		this.age = age;
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -115,30 +143,30 @@ public class Personal implements Serializable {
 	}
 
 }
-class Sortbyage implements Comparator<Personal> 
-{ 
-    // Used for sorting in ascending order of 
-    // age 
-    public int compare(Personal a, Personal b) 
-    { 
-        return a.getAge() - b.getAge(); 
-    } 
-} 
-class Sortbyincome implements Comparator<Personal> 
-{ 
-    // Used for sorting in ascending order of 
-    // income 
-    public int compare(Personal a, Personal b) 
-    { 
-        return (int) (a.getIncome() - b.getIncome()); 
-    } 
-} 
-class Sortbyname implements Comparator<Personal> 
-{ 
-    // Used for sorting in ascending order of 
-    // name 
-    public int compare(Personal a, Personal b) 
-    { 
-        return a.getNamn().compareTo(b.getNamn()); 
-    } 
-} 
+
+class Sortbyage implements Comparator<Personal> {
+	// Used for sorting in ascending order of
+	// age
+	@Override
+	public int compare(Personal a, Personal b) {
+		return a.getAge() - b.getAge();
+	}
+}
+
+class Sortbyincome implements Comparator<Personal> {
+	// Used for sorting in ascending order of
+	// income
+	@Override
+	public int compare(Personal a, Personal b) {
+		return (int) (a.getIncome() - b.getIncome());
+	}
+}
+
+class Sortbyname implements Comparator<Personal> {
+	// Used for sorting in ascending order of
+	// name
+	@Override
+	public int compare(Personal a, Personal b) {
+		return a.getNamn().compareTo(b.getNamn());
+	}
+}

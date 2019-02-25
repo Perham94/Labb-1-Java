@@ -37,10 +37,10 @@ public class PersonalRegister {
 				addPost(personalLista);
 				break;
 			case 2:
-				editPost();
+				editPost(personalLista);
 				break;
 			case 3:
-				deletePost();
+				deletePost(personalLista);
 				break;
 			case 4:
 				showPost(personalLista);
@@ -170,7 +170,10 @@ public class PersonalRegister {
 		}
 	}
 
-	private static void deletePost() {
+	private static void deletePost(ArrayList<Personal> personalLista) throws IOException {
+		System.out.println("Vem ska gå bort: ");
+		int index = searchPers(personalLista);
+		personalLista.remove(index);
 
 	}
 
@@ -190,7 +193,24 @@ public class PersonalRegister {
 		return personalLista;
 	}
 
-	private static void editPost() {
+	private static void editPost(ArrayList<Personal> personalLista) throws IOException {
+		System.out.println("Vem ska gå bort: ");
+		ConsoleReader cr = new ConsoleReader();
+		int index = searchPers(personalLista);
+
+		Personal p = personalLista.get(index);
+		System.out.print("Ändra Namn");
+		p.setNamn(cr.inStr());
+		System.out.print("Ändra Adress");
+		p.setAdress(cr.inStr());
+		System.out.print("Ändra Telefon");
+		p.setPhone(cr.inStr());
+		System.out.print("Ändra Post");
+		p.setPostnumber(cr.inStr());
+		System.out.print("Ändra Ålder");
+		p.setAge(cr.inInt());
+		System.out.print("Ändra Lön");
+		p.setIncome(cr.inLong());
 
 	}
 
