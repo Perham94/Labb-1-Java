@@ -38,7 +38,7 @@ public class PersonalRegister {
 				deletePost();
 				break;
 			case 4:
-				showPost();
+				showPost(personalLista);
 				break;
 			case 5:
 				break;
@@ -57,8 +57,11 @@ public class PersonalRegister {
 		}
 	}
 
-	private static void showPost() {
-		// TODO Auto-generated method stub
+	private static void showPost(ArrayList<Personal> personalLista) {
+		for (Personal index : personalLista) {
+
+			System.out.println(index);
+		}
 
 	}
 
