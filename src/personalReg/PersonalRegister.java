@@ -13,10 +13,9 @@ public class PersonalRegister {
 	}
 
 	public static void start() throws IOException {
-		ArrayList<Personal> personalLista= deSerialize();
+		ArrayList<Personal> personalLista = deSerialize();
 
 		ConsoleReader cr = new ConsoleReader();
-		 
 
 		while (true) {
 			System.out.println("1: Lägg till personal");
@@ -44,6 +43,7 @@ public class PersonalRegister {
 				showPost(personalLista);
 				break;
 			case 5:
+				searchPers(personalLista);
 				break;
 			case 6:
 				break;
@@ -57,6 +57,55 @@ public class PersonalRegister {
 				return;
 			}
 		}
+	}
+
+	@SuppressWarnings("null")
+	private static void searchPers(ArrayList<Personal> personalLista) throws IOException {
+		ConsoleReader cr = new ConsoleReader();
+		System.out.println("Vad söker du efter? 1. Personal namn , 2. Personal ålder "
+				+ ", 3. Personal Telefon Nummer , 4. Personal Adress, " + "5. Personal Postnummer + "
+				+ "6. Personal Lön");
+
+		Personal index = null;
+		String namn;
+
+		switch (cr.inInt()) {
+
+		case 1:
+			if (index.getNamn().matches(cr.inStr())) {
+				personalLista.indexOf(index.namn);
+			}
+			break;
+		case 2:
+			if (index.getAge() == cr.inInt()) {
+
+			}
+			break;
+
+		case 3:
+			if (index.getPhone().matches(cr.inStr())) {
+
+			}
+			break;
+
+		case 4:
+			if (index.getAdress().matches(cr.inStr())) {
+
+			}
+			break;
+		case 5:
+			if (index.getPostnumber().matches(cr.inStr())) {
+
+			}
+			break;
+
+		case 6:
+			if (index.getIncome() == cr.inLong()) {
+
+			}
+			break;
+		}
+
 	}
 
 	private static void showPost(ArrayList<Personal> personalLista) {
@@ -78,17 +127,16 @@ public class PersonalRegister {
 
 	private static ArrayList<Personal> deSerialize() {
 		IO in = new IO();
-	
+
 		@SuppressWarnings("unchecked")
 		ArrayList<Personal> personalLista = (ArrayList<Personal>) in.deSerialize(PATH);
-		if (personalLista==null) {
+		if (personalLista == null) {
 			return new ArrayList<Personal>();
 		}
 		return personalLista;
 	}
 
 	private static void editPost() {
-		// TODO Auto-generated method stub
 
 	}
 
