@@ -13,10 +13,13 @@ public class PersonalRegister {
 	}
 
 	public static void start() throws IOException {
-		ArrayList<Personal> personalLista = new ArrayList<>();
+		ArrayList<Personal> personalLista;
 
 		ConsoleReader cr = new ConsoleReader();
 		personalLista = deSerialize();
+		if (personalLista == null) {
+			personalLista = new ArrayList<>();
+		}
 		while (true) {
 			System.out.println("1: Lägg till personal");
 			System.out.println("2: Editera personal");
@@ -67,7 +70,6 @@ public class PersonalRegister {
 	}
 
 	private static void deletePost() {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -103,7 +105,7 @@ public class PersonalRegister {
 		System.out.println("id: ");
 		int id = cr.inInt();
 		System.out.println("lön: ");
-		int income = cr.inInt();
+		long income = cr.inLong();
 		personalLista.add(new Personal(namn, adress, phone, postnumber, age, id, income));
 	}
 
