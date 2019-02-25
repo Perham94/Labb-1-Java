@@ -30,8 +30,10 @@ start();
 			
 			switch (in) {
 				case 1 :
+					addPost();
 					break;
 				case 2 :
+					editPost();
 					break;
 				case 3 :
 					break;
@@ -52,5 +54,13 @@ start();
 					return;
 			}
 		}
+	}
+	private static void editPost() {
+		// TODO Auto-generated method stub
+		
+	}
+	private static void addPost() {
+		// TODO Auto-generated method stub
+		
 	}
 }
