@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 public class PersonalRegister {
 
+	private static final String PATH = "personalLista.ser";
+
 	public static void main(String[] args) throws IOException {
 		start();
 
@@ -14,7 +16,7 @@ public class PersonalRegister {
 		ArrayList<Personal> personalLista = new ArrayList<>();
 
 		ConsoleReader cr = new ConsoleReader();
-		deSerialize();
+		personalLista = deSerialize();
 		while (true) {
 			System.out.println("1: Lägg till personal");
 			System.out.println("2: Editera personal");
@@ -49,7 +51,7 @@ public class PersonalRegister {
 			case 8:
 				break;
 			case 9:
-				serialize();
+				serialize(personalLista);
 				System.out.println("Adjö!");
 				return;
 			}
@@ -69,14 +71,16 @@ public class PersonalRegister {
 
 	}
 
-	private static void serialize() {
-		// TODO Auto-generated method stub
-
+	private static void serialize(ArrayList<Personal> personalLista) {
+		IO in = new IO();
+		in.serialize(personalLista, PATH);
 	}
 
-	private static void deSerialize() {
-		// TODO Auto-generated method stub
-
+	private static ArrayList<Personal> deSerialize() {
+		IO in = new IO();
+		@SuppressWarnings("unchecked")
+		ArrayList<Personal> personalLista = (ArrayList<Personal>) in.deSerialize(PATH);
+		return personalLista;
 	}
 
 	private static void editPost() {
