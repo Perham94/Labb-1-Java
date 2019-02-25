@@ -59,52 +59,11 @@ public class PersonalRegister {
 		}
 	}
 
-	@SuppressWarnings("null")
 	private static void searchPers(ArrayList<Personal> personalLista) throws IOException {
 		ConsoleReader cr = new ConsoleReader();
 		System.out.println("Vad söker du efter? 1. Personal namn , 2. Personal ålder  "
 				+ ", 3. Personal Telefon Nummer , 4. Personal Adress, " + "5. Personal Postnummer + "
 				+ "6. Personal Lön");
-
-		Personal index = null;
-		String namn;
-
-		switch (cr.inInt()) {
-
-		case 1:
-			if (index.getNamn().matches(cr.inStr())) {
-				personalLista.indexOf(index.namn);
-			}
-			break;
-		case 2:
-			if (index.getAge() == cr.inInt()) {
-
-			}
-			break;
-
-		case 3:
-			if (index.getPhone().matches(cr.inStr())) {
-
-			}
-			break;
-
-		case 4:
-			if (index.getAdress().matches(cr.inStr())) {
-
-			}
-			break;
-		case 5:
-			if (index.getPostnumber().matches(cr.inStr())) {
-
-			}
-			break;
-
-		case 6:
-			if (index.getIncome() == cr.inLong()) {
-
-			}
-			break;
-		}
 
 	}
 
