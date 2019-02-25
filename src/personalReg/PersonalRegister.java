@@ -17,7 +17,6 @@ public class PersonalRegister {
 
 	public static void start() throws IOException {
 		ArrayList<Personal> personalLista = deSerialize();
-
 		readInList();
 		ConsoleReader cr = new ConsoleReader();
 
