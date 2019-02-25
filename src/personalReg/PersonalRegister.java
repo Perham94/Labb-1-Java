@@ -72,9 +72,11 @@ public class PersonalRegister {
 
 	}
 
-	private static void addPost(ArrayList<Personal> personalLista){
-		
-		personalLista.add(new Personal);
+	private static void addPost(ArrayList<Personal> personalLista) throws IOException {
+		ConsoleReader cr = new ConsoleReader();
+
+		personalLista
+				.add(new Personal(cr.inStr(), cr.inStr(), cr.inStr(), cr.inStr(), cr.inInt(), cr.inInt(), cr.inInt()));
 	}
 
 }
