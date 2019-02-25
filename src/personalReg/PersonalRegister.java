@@ -2,6 +2,7 @@ package personalReg;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public class PersonalRegister {
@@ -12,7 +13,6 @@ public class PersonalRegister {
 
 	public static void main(String[] args) throws IOException {
 		start();
-
 	}
 
 	public static void start() throws IOException {
@@ -49,6 +49,7 @@ public class PersonalRegister {
 				searchPers(personalLista);
 				break;
 			case 6:
+				sortList(personalLista);
 				break;
 			case 7:
 				randomizePersonal(personalLista);
@@ -58,6 +59,31 @@ public class PersonalRegister {
 			case 9:
 				serialize(personalLista);
 				System.out.println("Adjö!");
+				return;
+			}
+		}
+	}
+
+	private static void sortList(ArrayList<Personal> personalLista) throws IOException {
+
+		ConsoleReader cr = new ConsoleReader();
+
+		while (true) {
+			System.out.println("1: Sortera efter namn");
+			System.out.println("2: Sortera efter ålder");
+			System.out.println("3: Sortera efter lön");
+
+			int in = cr.inInt();
+
+			switch (in) {
+			case 1:
+				Collections.sort(personalLista, new Sortbyname());
+				return;
+			case 2:
+				Collections.sort(personalLista, new Sortbyage());
+				return;
+			case 3:
+				Collections.sort(personalLista, new Sortbyincome());
 				return;
 			}
 		}
@@ -140,10 +166,8 @@ public class PersonalRegister {
 
 	private static void showPost(ArrayList<Personal> personalLista) {
 		for (Personal index : personalLista) {
-
 			System.out.println(index);
 		}
-
 	}
 
 	private static void deletePost() {
