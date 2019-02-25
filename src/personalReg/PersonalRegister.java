@@ -79,6 +79,7 @@ public class PersonalRegister {
 	private static void editPost() {
 		// TODO Auto-generated method stub
 
+		
 	}
 
 	private static void addPost(ArrayList<Personal> personalLista) throws IOException {
