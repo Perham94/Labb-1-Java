@@ -1,12 +1,9 @@
+package personalReg;
 
-public class Main {
+public class PersonalRegister {
 
 	public static void main(String[] args) {
 
 	}
-
-}
-
-class Meny {
 
 }
