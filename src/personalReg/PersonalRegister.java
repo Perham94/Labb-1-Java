@@ -29,7 +29,7 @@ public class PersonalRegister {
 
 			switch (in) {
 			case 1:
-				addPost();
+				addPost(personalLista);
 				break;
 			case 2:
 				editPost();
@@ -72,8 +72,9 @@ public class PersonalRegister {
 
 	}
 
-	private static void addPost() {
-
+	private static void addPost(ArrayList<Personal> personalLista){
+		
+		personalLista.add(new Personal);
 	}
 
 }
