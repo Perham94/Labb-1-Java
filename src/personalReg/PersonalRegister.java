@@ -5,16 +5,36 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PersonalRegister.
+ */
 public class PersonalRegister {
 
+	/** The Constant PATH. */
 	private static final String PATH = "personalLista.ser";
+
+	/** The names list. */
 	private static String[] namesList;
+
+	/** The adress list. */
 	private static ArrayList<String> adressList;
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static void main(String[] args) throws IOException {
 		start();
 	}
 
+	/**
+	 * Start.
+	 *
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static void start() throws IOException {
 		ArrayList<Personal> personalLista = deSerialize();
 		readInList();
@@ -58,6 +78,11 @@ public class PersonalRegister {
 		}
 	}
 
+	/**
+	 * Creates the table.
+	 *
+	 * @param personalLista the personal lista
+	 */
 	private static void createTable(ArrayList<Personal> personalLista) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("<!DOCTYPE html>\r\n" + "<html>\r\n" + "<head>\r\n" + "<style>\r\n" + "table {\r\n"
@@ -153,6 +178,12 @@ public class PersonalRegister {
 
 	}
 
+	/**
+	 * Sort list.
+	 *
+	 * @param personalLista the personal lista
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	private static void sortList(ArrayList<Personal> personalLista) throws IOException {
 
 		ConsoleReader cr = new ConsoleReader();
@@ -178,11 +209,19 @@ public class PersonalRegister {
 		}
 	}
 
+	/**
+	 * Read in list.
+	 */
 	private static void readInList() {
 		namesList = IO.readNames("names.txt").get(0).replace("\"", "").split(",");
 		adressList = IO.readAdress("adressList.txt");
 	}
 
+	/**
+	 * Randomize personal.
+	 *
+	 * @param personalLista the personal lista
+	 */
 	private static void randomizePersonal(ArrayList<Personal> personalLista) {
 
 		Random rand = new java.util.Random();
@@ -197,6 +236,12 @@ public class PersonalRegister {
 		personalLista.add(new Personal(namn, adress[0], phone, adress[1], age, wage));
 	}
 
+	/**
+	 * Search pers.
+	 *
+	 * @param personalLista the personal lista
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	private static void searchPers(ArrayList<Personal> personalLista) throws IOException {
 
 		ConsoleReader cr = new ConsoleReader();
@@ -267,22 +312,43 @@ public class PersonalRegister {
 		}
 	}
 
+	/**
+	 * Show post.
+	 *
+	 * @param personalLista the personal lista
+	 */
 	private static void showPost(ArrayList<Personal> personalLista) {
 		for (Personal index : personalLista) {
 			System.out.println(index);
 		}
 	}
 
+	/**
+	 * Delete post.
+	 *
+	 * @param personalLista the personal lista
+	 * @param index         the index
+	 */
 	private static void deletePost(ArrayList<Personal> personalLista, int index) {
 
 		personalLista.remove(index);
 
 	}
 
+	/**
+	 * Serialize.
+	 *
+	 * @param personalLista the personal lista
+	 */
 	private static void serialize(ArrayList<Personal> personalLista) {
 		IO.serialize(personalLista, PATH);
 	}
 
+	/**
+	 * De serialize.
+	 *
+	 * @return the array list
+	 */
 	private static ArrayList<Personal> deSerialize() {
 
 		@SuppressWarnings("unchecked")
@@ -295,6 +361,13 @@ public class PersonalRegister {
 		return personalLista;
 	}
 
+	/**
+	 * Edits the post.
+	 *
+	 * @param personalLista the personal lista
+	 * @param index         the index
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	private static void editPost(ArrayList<Personal> personalLista, int index) throws IOException {
 
 		ConsoleReader cr = new ConsoleReader();
@@ -315,6 +388,12 @@ public class PersonalRegister {
 
 	}
 
+	/**
+	 * Adds the post.
+	 *
+	 * @param personalLista the personal lista
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	private static void addPost(ArrayList<Personal> personalLista) throws IOException {
 		ConsoleReader cr = new ConsoleReader();
 		System.out.println("Namn: ");

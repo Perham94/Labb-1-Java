@@ -15,10 +15,21 @@ import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 
-
+// TODO: Auto-generated Javadoc
+/**
+ * The Class IO.
+ */
 public class IO {
+
+	/** The Constant CHARSET. */
 	private final static Charset CHARSET = Charset.forName("UTF-8");
 
+	/**
+	 * Write.
+	 *
+	 * @param text the text
+	 * @param file the file
+	 */
 	public static void write(String text, String file) {
 		try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(file), CHARSET)) {
 			writer.write(text, 0, text.length());
@@ -28,6 +39,12 @@ public class IO {
 		}
 	}
 
+	/**
+	 * Write append.
+	 *
+	 * @param text the text
+	 * @param file the file
+	 */
 	public static void writeAppend(String text, String file) {
 
 		try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(file), CHARSET, StandardOpenOption.APPEND)) {
@@ -39,6 +56,12 @@ public class IO {
 		}
 	}
 
+	/**
+	 * Serialize.
+	 *
+	 * @param obj  the obj
+	 * @param path the path
+	 */
 	public static void serialize(Object obj, String path) {
 		try {
 			FileOutputStream filout = new FileOutputStream(path);
@@ -51,6 +74,12 @@ public class IO {
 		}
 	}
 
+	/**
+	 * De serialize.
+	 *
+	 * @param path the path
+	 * @return the object
+	 */
 	public static Object deSerialize(String path) {
 
 		try {
@@ -63,7 +92,7 @@ public class IO {
 				ois.close();
 				fis.close();
 				return obj;
-			}else {
+			} else {
 				return new ArrayList<Personal>();
 			}
 		} catch (IOException ioe) {
@@ -76,6 +105,12 @@ public class IO {
 		}
 	}
 
+	/**
+	 * Read names.
+	 *
+	 * @param path the path
+	 * @return the list
+	 */
 	public static List<String> readNames(String path) {
 
 		List<String> fileArr = null;
@@ -88,6 +123,12 @@ public class IO {
 		return null;
 	}
 
+	/**
+	 * Read adress.
+	 *
+	 * @param path the path
+	 * @return the array list
+	 */
 	public static ArrayList<String> readAdress(String path) {
 		ArrayList<String> a = new ArrayList<>();
 
@@ -98,7 +139,7 @@ public class IO {
 				String adress = line;
 				line = reader.readLine();
 
-				a.add(adress+" " +line);
+				a.add(adress + " " + line);
 
 			}
 		} catch (IOException x) {

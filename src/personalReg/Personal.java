@@ -4,14 +4,37 @@ import java.io.Serializable;
 import java.util.Comparator;
 import java.util.UUID;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Personal.
+ */
 public class Personal implements Serializable {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -3869961098372491439L;
+
+	/** The postnumber. */
 	private String namn, adress, phone, postnumber;
+
+	/** The age. */
 	private int age;
+
+	/** The id. */
 	private UUID id;
+
+	/** The income. */
 	private long income;
-	
+
+	/**
+	 * Instantiates a new personal.
+	 *
+	 * @param namn       the namn
+	 * @param adress     the adress
+	 * @param phone      the phone
+	 * @param postnumber the postnumber
+	 * @param age        the age
+	 * @param income     the income
+	 */
 	public Personal(String namn, String adress, String phone, String postnumber, int age, long income) {
 
 		this.namn = namn;
@@ -24,6 +47,8 @@ public class Personal implements Serializable {
 	}
 
 	/**
+	 * Gets the adress.
+	 *
 	 * @return the adress
 	 */
 	public String getAdress() {
@@ -31,6 +56,8 @@ public class Personal implements Serializable {
 	}
 
 	/**
+	 * Gets the age.
+	 *
 	 * @return the age
 	 */
 	public int getAge() {
@@ -38,6 +65,8 @@ public class Personal implements Serializable {
 	}
 
 	/**
+	 * Gets the id.
+	 *
 	 * @return the id
 	 */
 	public UUID getId() {
@@ -45,6 +74,8 @@ public class Personal implements Serializable {
 	}
 
 	/**
+	 * Gets the income.
+	 *
 	 * @return the income
 	 */
 	public long getIncome() {
@@ -52,6 +83,8 @@ public class Personal implements Serializable {
 	}
 
 	/**
+	 * Gets the namn.
+	 *
 	 * @return the namn
 	 */
 	public String getNamn() {
@@ -59,6 +92,8 @@ public class Personal implements Serializable {
 	}
 
 	/**
+	 * Gets the phone.
+	 *
 	 * @return the phone
 	 */
 	public String getPhone() {
@@ -66,6 +101,8 @@ public class Personal implements Serializable {
 	}
 
 	/**
+	 * Gets the postnumber.
+	 *
 	 * @return the postnumber
 	 */
 	public String getPostnumber() {
@@ -73,6 +110,8 @@ public class Personal implements Serializable {
 	}
 
 	/**
+	 * Sets the id.
+	 *
 	 * @param id the id to set
 	 */
 	public void setId(UUID id) {
@@ -80,6 +119,8 @@ public class Personal implements Serializable {
 	}
 
 	/**
+	 * Sets the income.
+	 *
 	 * @param income the income to set
 	 */
 	public void setIncome(long income) {
@@ -87,6 +128,8 @@ public class Personal implements Serializable {
 	}
 
 	/**
+	 * Sets the phone.
+	 *
 	 * @param phone the phone to set
 	 */
 	public void setPhone(String phone) {
@@ -94,6 +137,8 @@ public class Personal implements Serializable {
 	}
 
 	/**
+	 * Sets the postnumber.
+	 *
 	 * @param postnumber the postnumber to set
 	 */
 	public void setPostnumber(String postnumber) {
@@ -101,6 +146,8 @@ public class Personal implements Serializable {
 	}
 
 	/**
+	 * Gets the serialversionuid.
+	 *
 	 * @return the serialversionuid
 	 */
 	public static long getSerialversionuid() {
@@ -108,6 +155,8 @@ public class Personal implements Serializable {
 	}
 
 	/**
+	 * Sets the namn.
+	 *
 	 * @param namn the namn to set
 	 */
 	public void setNamn(String namn) {
@@ -115,6 +164,8 @@ public class Personal implements Serializable {
 	}
 
 	/**
+	 * Sets the adress.
+	 *
 	 * @param adress the adress to set
 	 */
 	public void setAdress(String adress) {
@@ -122,6 +173,8 @@ public class Personal implements Serializable {
 	}
 
 	/**
+	 * Sets the age.
+	 *
 	 * @param age the age to set
 	 */
 	public void setAge(int age) {
