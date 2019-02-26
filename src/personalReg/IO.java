@@ -28,7 +28,7 @@ public class IO {
 	 * Write.
 	 *
 	 * @param text the text
-	 * @param file the files
+	 * @param file the file
 	 */
 	public static void write(String text, String file) {
 		try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(file), CHARSET)) {
