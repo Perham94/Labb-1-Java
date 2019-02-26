@@ -190,7 +190,6 @@ public class Personal implements Serializable {
 		return "\nNamn: " + namn + "\nAdress= " + adress + "\nTelefonNr: " + phone + "\nPostNr: " + postnumber
 				+ "\nÅlder: " + age + "\nID: " + id + "\nLön: " + income + "\n";
 	}
-
 }
 
 class Sortbyage implements Comparator<Personal> {
