@@ -65,9 +65,13 @@ public class PersonalRegister {
 				+ "}\r\n" + "\r\n" + "td, th {\r\n" + "  border: 1px solid #dddddd;\r\n" + "  text-align: left;\r\n"
 				+ "  padding: 8px;\r\n" + "}\r\n" + "\r\n" + "tr:nth-child(even) {\r\n"
 				+ "  background-color: #dddddd;\r\n" + "}\r\n" + "</style>\r\n" + "</head>\r\n" + "<body>\r\n" + "\r\n"
-				+ "<h2>Personal Lista</h2>\r\n" + "\r\n" + "<table>\r\n" + "  <tr>\r\n" + "    <th>Namn</th>\r\n"
-				+ "    <th>Adress</th>\r\n" + "    <th>Telefon nummer</th>\r\n" + "	<th>Post nummer</th>\r\n"
-				+ "    <th>Ålder</th>\r\n" + "	<th>Inkomst</th>\r\n" + "	<th>UUID</th>\r\n" + "  </tr>");
+				+ "<h2>Personal Lista</h2>\r\n" + "\r\n" + "<table id=\"myTable2\">\r\n" + "  <tr>\r\n"
+				+ "    <th onclick=\"sortTable(0)\">Namn</th>\r\n" + "    <th onclick=\"sortTable(1)\">Adress</th>\r\n"
+				+ "    <th  onclick=\"sortTable(2)\">Telefon nummer</th>\r\n"
+				+ "	<th  onclick=\"sortTable(3)\">Post nummer</th>\r\n"
+				+ "    <th  onclick=\"sortTableNr(4)\">Ålder</th>\r\n"
+				+ "	<th  onclick=\"sortTableNr(5)\">Inkomst</th>\r\n" + "	<th onclick=\"sortTable(6)\">UUID</th>\r\n"
+				+ "  </tr>");
 
 		for (Personal personal : personalLista) {
 			sb.append("<tr>");
@@ -79,11 +83,73 @@ public class PersonalRegister {
 			sb.append("<td>" + personal.getIncome() + "</td>");
 			sb.append("<td>" + personal.getId() + "</td>");
 			sb.append("</tr>");
-		}
-
-		sb.append("</table>\r\n" + "\r\n" + "</body>\r\n" + "</html>");
+		sb.append("<script>\r\n" + "function sortTable(n) {\r\n"
+				+ "  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;\r\n"
+				+ "  table = document.getElementById(\"myTable2\");\r\n" + "  switching = true;\r\n"
+				+ "  // Set the sorting direction to ascending:\r\n" + "  dir = \"asc\"; \r\n"
+				+ "  /* Make a loop that will continue until\r\n" + "  no switching has been done: */\r\n"
+				+ "  while (switching) {\r\n" + "    // Start by saying: no switching is done:\r\n"
+				+ "    switching = false;\r\n" + "    rows = table.rows;\r\n"
+				+ "    /* Loop through all table rows (except the\r\n"
+				+ "    first, which contains table headers): */\r\n"
+				+ "    for (i = 1; i < (rows.length - 1); i++) {\r\n"
+				+ "      // Start by saying there should be no switching:\r\n" + "      shouldSwitch = false;\r\n"
+				+ "      /* Get the two elements you want to compare,\r\n"
+				+ "      one from current row and one from the next: */\r\n"
+				+ "      x = rows[i].getElementsByTagName(\"TD\")[n];\r\n"
+				+ "      y = rows[i + 1].getElementsByTagName(\"TD\")[n];\r\n"
+				+ "      /* Check if the two rows should switch place,\r\n"
+				+ "      based on the direction, asc or desc: */\r\n" + "      if (dir == \"asc\") {\r\n"
+				+ "        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {\r\n"
+				+ "          // If so, mark as a switch and break the loop:\r\n" + "          shouldSwitch = true;\r\n"
+				+ "          break;\r\n" + "        }\r\n" + "      } else if (dir == \"desc\") {\r\n"
+				+ "        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {\r\n"
+				+ "          // If so, mark as a switch and break the loop:\r\n" + "          shouldSwitch = true;\r\n"
+				+ "          break;\r\n" + "        }\r\n" + "      }\r\n" + "    }\r\n" + "    if (shouldSwitch) {\r\n"
+				+ "      /* If a switch has been marked, make the switch\r\n"
+				+ "      and mark that a switch has been done: */\r\n"
+				+ "      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);\r\n" + "      switching = true;\r\n"
+				+ "      // Each time a switch is done, increase this count by 1:\r\n" + "      switchcount ++; \r\n"
+				+ "    } else {\r\n" + "      /* If no switching has been done AND the direction is \"asc\",\r\n"
+				+ "      set the direction to \"desc\" and run the while loop again. */\r\n"
+				+ "      if (switchcount == 0 && dir == \"asc\") {\r\n" + "        dir = \"desc\";\r\n"
+				+ "        switching = true;\r\n" + "      }\r\n" + "    }\r\n" + "  }\r\n" + "}\r\n"
+				+ "function sortTableNr(n) {\r\n"
+				+ "  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;\r\n"
+				+ "  table = document.getElementById(\"myTable2\");\r\n" + "  switching = true;\r\n"
+				+ "  //Set the sorting direction to ascending:\r\n" + "  dir = \"asc\"; \r\n"
+				+ "  /*Make a loop that will continue until\r\n" + "  no switching has been done:*/\r\n"
+				+ "  while (switching) {\r\n" + "    //start by saying: no switching is done:\r\n"
+				+ "    switching = false;\r\n" + "    rows = table.rows;\r\n"
+				+ "    /*Loop through all table rows (except the\r\n"
+				+ "    first, which contains table headers):*/\r\n"
+				+ "    for (i = 1; i < (rows.length - 1); i++) {\r\n"
+				+ "      //start by saying there should be no switching:\r\n" + "      shouldSwitch = false;\r\n"
+				+ "      /*Get the two elements you want to compare,\r\n"
+				+ "      one from current row and one from the next:*/\r\n"
+				+ "      x = rows[i].getElementsByTagName(\"TD\")[n];\r\n"
+				+ "      y = rows[i + 1].getElementsByTagName(\"TD\")[n];\r\n"
+				+ "      /*check if the two rows should switch place,\r\n"
+				+ "      based on the direction, asc or desc:*/\r\n" + "      if (dir == \"asc\") {\r\n"
+				+ "        if (Number(x.innerHTML) > Number(y.innerHTML)) {\r\n"
+				+ "          //if so, mark as a switch and break the loop:\r\n" + "          shouldSwitch= true;\r\n"
+				+ "          break;\r\n" + "        }\r\n" + "      } else if (dir == \"desc\") {\r\n"
+				+ "        if (Number(x.innerHTML) < Number(y.innerHTML)) {\r\n"
+				+ "          //if so, mark as a switch and break the loop:\r\n" + "          shouldSwitch = true;\r\n"
+				+ "          break;\r\n" + "        }\r\n" + "      }\r\n" + "    }\r\n" + "    if (shouldSwitch) {\r\n"
+				+ "      /*If a switch has been marked, make the switch\r\n"
+				+ "      and mark that a switch has been done:*/\r\n"
+				+ "      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);\r\n" + "      switching = true;\r\n"
+				+ "      //Each time a switch is done, increase this count by 1:\r\n"
+				+ "      switchcount ++;      \r\n" + "    } else {\r\n"
+				+ "      /*If no switching has been done AND the direction is \"asc\",\r\n"
+				+ "      set the direction to \"desc\" and run the while loop again.*/\r\n"
+				+ "      if (switchcount == 0 && dir == \"asc\") {\r\n" + "        dir = \"desc\";\r\n"
+				+ "        switching = true;\r\n" + "      }\r\n" + "    }\r\n" + "  }\r\n" + "}</script>");
+		sb.append("</html>");
 
 		IO.write(sb.toString(), "rapport.html");
+	}
 	}
 
 	private static void sortList(ArrayList<Personal> personalLista) throws IOException {
