@@ -150,7 +150,7 @@ public class PersonalRegister {
 		sb.append("</html>");
 
 		IO.write(sb.toString(), "rapport.html");
-	
+
 	}
 
 	private static void sortList(ArrayList<Personal> personalLista) throws IOException {
@@ -212,49 +212,50 @@ public class PersonalRegister {
 
 			case 1:
 				if (p.getNamn().contains(text)) {
-					System.out.println("found " + personalLista.get(personalLista.indexOf(p)));
 					elementIndex = personalLista.indexOf(p);
+					System.out.println("found\n " + personalLista.get(personalLista.indexOf(p)));
 
 				}
 				break;
 			case 2:
 				if (p.getAge() == Integer.parseInt(text)) {
-					System.out.println("found " + personalLista.get(personalLista.indexOf(p)));
 					elementIndex = personalLista.indexOf(p);
-
+					System.out.println("Personal Found\n " + personalLista.get(personalLista.indexOf(p)));
 				}
+
 				break;
 			case 3:
 				if (p.getAdress().contains(text)) {
-					System.out.println("found " + personalLista.get(personalLista.indexOf(p)));
 					elementIndex = personalLista.indexOf(p);
-
+					System.out.println("found\n " + personalLista.get(personalLista.indexOf(p)));
 				}
 				break;
 			case 4:
 				if (p.getPhone().contains(text)) {
-					System.out.println("found " + personalLista.get(personalLista.indexOf(p)));
 					elementIndex = personalLista.indexOf(p);
-
+					System.out.println("found\n " + personalLista.get(personalLista.indexOf(p)));
 				}
+
 				break;
 			case 5:
 				if (p.getPostnumber().contains(text)) {
-					System.out.println("found " + personalLista.get(personalLista.indexOf(p)));
 					elementIndex = personalLista.indexOf(p);
-
+					System.out.println("found\n " + personalLista.get(personalLista.indexOf(p)));
 				}
+
 				break;
 			case 6:
 				if (p.getIncome() == Long.parseLong(text)) {
-					System.out.println("found " + personalLista.get(personalLista.indexOf(p)));
 					elementIndex = personalLista.indexOf(p);
-
+					System.out.println("found\n " + personalLista.get(personalLista.indexOf(p)));
 				}
+
 				break;
+
 			}
 		}
-		System.out.print("Vill du göra? 1. Ta bort personal 2.Rediger Personal, " + "tryck på övrigt Inget av dessa");
+		System.out
+				.println("Vill du göra? 1. Ta bort personal 2.Rediger Personal, " + "tryck på övrigt Inget av dessa: ");
 		int task = cr.inInt();
 		if (task == 1) {
 			deletePost(personalLista, elementIndex);
