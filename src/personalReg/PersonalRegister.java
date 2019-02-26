@@ -22,42 +22,35 @@ public class PersonalRegister {
 
 		while (true) {
 			System.out.println("1: Lägg till personal");
-			System.out.println("2: Editera personal");
-			System.out.println("3: Radera personal");
-			System.out.println("4: Visa all personal");
-			System.out.println("5: Sök personal");
-			System.out.println("6: Sortera personal");
-			System.out.println("7: Skapa en personal automatiskt");
-			System.out.println("8: Skapa rapport");
-			System.out.println("9: Avsluta");
+			System.out.println("2: Visa all personal");
+			System.out.println("3: Sök personal");
+			System.out.println("4: Sortera personal");
+			System.out.println("5: Skapa en personal automatiskt");
+			System.out.println("6: Skapa rapport");
+			System.out.println("7: Avsluta");
 			int in = cr.inInt();
 
 			switch (in) {
 			case 1:
 				addPost(personalLista);
 				break;
+
 			case 2:
-				editPost(personalLista);
-				break;
-			case 3:
-				deletePost(personalLista);
-				break;
-			case 4:
 				showPost(personalLista);
 				break;
-			case 5:
+			case 3:
 				searchPers(personalLista);
 				break;
-			case 6:
+			case 4:
 				sortList(personalLista);
 				break;
-			case 7:
+			case 5:
 				randomizePersonal(personalLista);
 				break;
-			case 8:
+			case 6:
 				createTable(personalLista);
 				break;
-			case 9:
+			case 7:
 				serialize(personalLista);
 				System.out.println("Adjö!");
 				return;
@@ -78,22 +71,19 @@ public class PersonalRegister {
 
 		for (Personal personal : personalLista) {
 			sb.append("<tr>");
-			sb.append("<td>"+personal.getNamn()+"</td>");
-			sb.append("<td>"+personal.getAdress()+"</td>");
-			sb.append("<td>"+personal.getPhone()+"</td>");
-			sb.append("<td>"+personal.getPostnumber()+"</td>");
-			sb.append("<td>"+personal.getAge()+"</td>");
-			sb.append("<td>"+personal.getIncome()+"</td>");
-			sb.append("<td>"+personal.getId()+"</td>");
+			sb.append("<td>" + personal.getNamn() + "</td>");
+			sb.append("<td>" + personal.getAdress() + "</td>");
+			sb.append("<td>" + personal.getPhone() + "</td>");
+			sb.append("<td>" + personal.getPostnumber() + "</td>");
+			sb.append("<td>" + personal.getAge() + "</td>");
+			sb.append("<td>" + personal.getIncome() + "</td>");
+			sb.append("<td>" + personal.getId() + "</td>");
 			sb.append("</tr>");
 		}
-		
-		sb.append("</table>\r\n" + 
-				"\r\n" + 
-				"</body>\r\n" + 
-				"</html>");
-		
-		IO.write(sb.toString(),"rapport.html");
+
+		sb.append("</table>\r\n" + "\r\n" + "</body>\r\n" + "</html>");
+
+		IO.write(sb.toString(), "rapport.html");
 	}
 
 	private static void sortList(ArrayList<Personal> personalLista) throws IOException {
@@ -140,60 +130,73 @@ public class PersonalRegister {
 		personalLista.add(new Personal(namn, adress[0], phone, adress[1], age, wage));
 	}
 
-	private static int searchPers(ArrayList<Personal> personalLista) throws IOException {
+	private static void searchPers(ArrayList<Personal> personalLista) throws IOException {
 
 		ConsoleReader cr = new ConsoleReader();
 
-		System.out.println("Vad söker du efter?" + " 1.Namn 2.Ålder 3.Adress 4.telefon nummer 5.post nummer 6.lön");
-
 		int elementIndex = 0;
+		System.out.println("Vad söker du efter?" + " 1.Namn 2.Ålder 3.Adress 4.telefon nummer 5.post nummer 6.lön");
 		int in = cr.inInt();
+		System.out.println("Ange vad du vill söka:");
 		String text = cr.inStr();
 
 		for (Personal p : personalLista) {
-			System.out.println("Ange vad du vill söka");
 			switch (in) {
 
 			case 1:
 				if (p.getNamn().contains(text)) {
 					System.out.println("found " + personalLista.get(personalLista.indexOf(p)));
 					elementIndex = personalLista.indexOf(p);
+
 				}
 				break;
 			case 2:
 				if (p.getAge() == Integer.parseInt(text)) {
 					System.out.println("found " + personalLista.get(personalLista.indexOf(p)));
 					elementIndex = personalLista.indexOf(p);
+
 				}
 				break;
 			case 3:
 				if (p.getAdress().contains(text)) {
 					System.out.println("found " + personalLista.get(personalLista.indexOf(p)));
 					elementIndex = personalLista.indexOf(p);
+
 				}
 				break;
 			case 4:
 				if (p.getPhone().contains(text)) {
 					System.out.println("found " + personalLista.get(personalLista.indexOf(p)));
 					elementIndex = personalLista.indexOf(p);
+
 				}
 				break;
 			case 5:
 				if (p.getPostnumber().contains(text)) {
 					System.out.println("found " + personalLista.get(personalLista.indexOf(p)));
 					elementIndex = personalLista.indexOf(p);
+
 				}
 				break;
 			case 6:
 				if (p.getIncome() == Long.parseLong(text)) {
 					System.out.println("found " + personalLista.get(personalLista.indexOf(p)));
 					elementIndex = personalLista.indexOf(p);
+
 				}
 				break;
 			}
 		}
+		System.out.print("Vill du göra? 1. Ta bort personal 2.Rediger Personal, " + "tryck på övrigt Inget av dessa");
+		int task = cr.inInt();
+		if (task == 1) {
+			deletePost(personalLista, elementIndex);
 
-		return elementIndex;
+		}
+		if (task == 2) {
+			editPost(personalLista, elementIndex);
+
+		}
 	}
 
 	private static void showPost(ArrayList<Personal> personalLista) {
@@ -202,9 +205,8 @@ public class PersonalRegister {
 		}
 	}
 
-	private static void deletePost(ArrayList<Personal> personalLista) throws IOException {
-		System.out.println("Vem ska gå bort: ");
-		int index = searchPers(personalLista);
+	private static void deletePost(ArrayList<Personal> personalLista, int index) {
+
 		personalLista.remove(index);
 
 	}
@@ -225,10 +227,9 @@ public class PersonalRegister {
 		return personalLista;
 	}
 
-	private static void editPost(ArrayList<Personal> personalLista) throws IOException {
-		System.out.println("Vem ska gå bort: ");
+	private static void editPost(ArrayList<Personal> personalLista, int index) throws IOException {
+
 		ConsoleReader cr = new ConsoleReader();
-		int index = searchPers(personalLista);
 
 		Personal p = personalLista.get(index);
 		System.out.print("Ändra Namn");
