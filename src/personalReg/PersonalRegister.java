@@ -83,6 +83,7 @@ public class PersonalRegister {
 			sb.append("<td>" + personal.getIncome() + "</td>");
 			sb.append("<td>" + personal.getId() + "</td>");
 			sb.append("</tr>");
+		}
 		sb.append("<script>\r\n" + "function sortTable(n) {\r\n"
 				+ "  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;\r\n"
 				+ "  table = document.getElementById(\"myTable2\");\r\n" + "  switching = true;\r\n"
@@ -149,7 +150,7 @@ public class PersonalRegister {
 		sb.append("</html>");
 
 		IO.write(sb.toString(), "rapport.html");
-	}
+	
 	}
 
 	private static void sortList(ArrayList<Personal> personalLista) throws IOException {
