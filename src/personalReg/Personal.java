@@ -160,7 +160,6 @@ public class Personal implements Serializable {
 	 */
 	public void setNamn(String namn) {
 		this.namn = namn;
-		
 	}
 
 	/**
