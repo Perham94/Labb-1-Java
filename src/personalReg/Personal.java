@@ -11,7 +11,6 @@ public class Personal implements Serializable {
 	private int age;
 	private UUID id;
 	private long income;
-
 	
 	public Personal(String namn, String adress, String phone, String postnumber, int age, long income) {
 
