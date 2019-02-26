@@ -6,9 +6,6 @@ import java.util.UUID;
 
 public class Personal implements Serializable {
 
-	/**
-	* 
-	*/
 	private static final long serialVersionUID = -3869961098372491439L;
 	private String namn, adress, phone, postnumber;
 	private int age;
