@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Comparator;
 import java.util.UUID;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Personal.
  */
@@ -191,7 +190,6 @@ public class Personal implements Serializable {
 		return "\nNamn: " + namn + "\nAdress= " + adress + "\nTelefonNr: " + phone + "\nPostNr: " + postnumber
 				+ "\nÅlder: " + age + "\nID: " + id + "\nLön: " + income + "\n";
 	}
-
 }
 
 class Sortbyage implements Comparator<Personal> {
